@@ -5,7 +5,7 @@ A React dashboard for analyzing proxy logs, detecting PII, hashes, and sensitive
 ## Features
 
 - **Log Analysis**: Reads and parses `proxy-access.log` from `backend-demo`
-- **PII Detection**: Automatically detects emails, phone numbers, SSNs, hashes, and suspicious fields
+- **PII Detection**: Automatically detects emails, phone numbers, SSNs, hashes, base64 encoded data, and suspicious fields
 - **Analytics Dashboard**: Visualizations of flagged endpoints, PII types, and trends
 - **Log Viewer**: View flagged logs with highlighted PII (like PII detection AI tools)
 - **Settings**: Configure detection rules, keywords, and regex patterns
@@ -80,8 +80,13 @@ Default patterns included:
 - **MD5 Hashes**: `/\b[a-fA-F0-9]{32}\b/g`
 - **SHA1 Hashes**: `/\b[a-fA-F0-9]{40}\b/g`
 - **SHA256 Hashes**: `/\b[a-fA-F0-9]{64}\b/g`
+- **Base64 Encoded Data**: `/([A-Za-z0-9+/]{16,}={0,2})/g` - Detects base64 strings (16+ characters) with validation
+  - Validates proper base64 format (valid characters, length multiple of 4, correct padding)
+  - Attempts to decode and shows preview of decoded content
+  - Useful for detecting encoded secrets, credentials, or suspicious payloads
 - **JWT Tokens**: `/\beyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\b/g`
 - **API Tokens**: Pattern matching token/secret field names
+- **High Entropy Tokens**: Detects random-looking strings using Shannon entropy analysis
 
 Also detects suspicious field names in JSON:
 - email, Email, EMail, password, token, secret, id, userId, etc.
