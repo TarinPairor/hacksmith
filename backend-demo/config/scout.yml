@@ -1,0 +1,51 @@
+# TestToken Scout Configuration File
+# This file demonstrates the expected format for auth config
+
+# Known tokens per role (for testing)
+tokens:
+  admin:
+    - "admin_token_12345"
+    - "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzAwMDAwMDAwfQ.example"
+  user:
+    - "user_token_67890"
+    - "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MDAwMDAwMDB9.example"
+  support:
+    - "support_token_11111"
+  partner:
+    - "partner_token_22222"
+    - "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzIiwicm9sZSI6InBhcnRuZXIiLCJpYXQiOjE3MDAwMDAwMDB9.example"
+
+# Example user IDs for IDOR tests
+test_users:
+  - id: "1"
+    email: "alice@example.com"
+    role: "admin"
+  - id: "2"
+    email: "bob@example.com"
+    role: "user"
+  - id: "3"
+    email: "charlie@example.com"
+    role: "user"
+  - id: "4"
+    email: "diana@example.com"
+    role: "partner"
+
+# Safety limits
+limits:
+  max_requests_per_minute: 60
+  max_enumeration_range: 50
+  blocklist:
+    - "/admin/delete-all"
+    - "/admin/nuke-database"
+
+# Wordlists (optional)
+wordlists:
+  fake_emails:
+    - "nosuchuser123@example.com"
+    - "definitelynotreal@test.com"
+    - "fakeemail+test@domain.com"
+  fake_ids:
+    - "999999"
+    - "000000"
+    - "invalid_id"
+

@@ -1,0 +1,19 @@
+{
+  "development": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "testdb",
+    "username": "admin",
+    "password": "super_secret_database_password_12345",
+    "connection_string": "postgresql://admin:super_secret_database_password_12345@localhost:5432/testdb"
+  },
+  "production": {
+    "host": "prod-db.example.com",
+    "port": 5432,
+    "database": "proddb",
+    "username": "prod_admin",
+    "password": "PROD_SECRET_PASSWORD_DO_NOT_COMMIT",
+    "connection_string": "postgresql://prod_admin:PROD_SECRET_PASSWORD_DO_NOT_COMMIT@prod-db.example.com:5432/proddb"
+  }
+}
+
