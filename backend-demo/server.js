@@ -25,7 +25,7 @@ app.use('/api', require('./routes/email'));
 app.use('/api', require('./routes/orders'));
 app.use('/api', require('./routes/customer'));
 app.use('/api', require('./routes/partner'));
-app.use('/api', require('./routes/service'));
+// app.use('/api', require('./routes/service'));
 app.use('/api', require('./routes/admin'));
 
 // Health check
@@ -48,8 +48,7 @@ app.get('/', (req, res) => {
       partner: '/api/partner',
       service: '/api/service',
       admin: '/api/admin'
-    },
-    warning: 'DO NOT USE IN PRODUCTION - This is a demo with intentional vulnerabilities'
+    }
   });
 });
 
